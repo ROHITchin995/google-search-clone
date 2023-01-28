@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import PersonIcon from '@mui/icons-material/Person';
 import "./Home.css"
+import { Search } from '../Components/Search';
 export const Home = () => {
   return (
     <div className='home'>
@@ -19,7 +20,7 @@ export const Home = () => {
       <div className="home_body">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/368px-Google_2015_logo.svg.png" alt="" />
         <div className="home_inputContainer">
-          Search
+          <Search />
         </div>
       </div>
     </div>
