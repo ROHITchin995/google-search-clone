@@ -76,15 +76,17 @@ export const SearchPage = () => {
         </p>
 
         {
-          data?.items.map(item=>(
-            <div className='searchPage_result'>
+          data?.items.map((item, index)=>(
+            <div className='searchPage_result' key={index}>
               {/* eslint-disable-next-line react/jsx-no-target-blank */}
               <a href={item.lin} target="blank">
                 {item.pagemap?.cse_image?.length > 0 && item.pagemap?.cse_image[0]?.src && (
-                  <img src={item.pagemap?.cse_image?.length > 0 && item.pagemap?.cse_image[0]?.src} alt="" />
+                  <img src={item.pagemap?.cse_image?.length > 0 && item.pagemap?.cse_image[0]?.src} alt="" 
+                  className="searchPage_resultImage"/>
                 )}
                 {item.displayLink} ✔
               </a>
+               {/* eslint-disable-next-line react/jsx-no-target-blank */}
               <a href={item.link} className="searchPage_resultTitle" target="_blank">
                 <h2>{item.title}</h2>
               </a>
