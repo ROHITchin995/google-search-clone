@@ -5,16 +5,20 @@ import MicIcon from '@mui/icons-material/Mic';
 import {actionTypes} from "../StateProvider/Reducer"
 import { useStateValue } from '../StateProvider/StateProvider';
 import { Button } from '@mui/material';
+import {useNavigate} from "react-router-dom";
 export const Search = ({hideButtons = false}) => {
     const [input, setInput] = useState("")
     // eslint-disable-next-line no-empty-pattern
     const [{}, dispatch] = useStateValue()
 
+    const navigate = useNavigate()
     const search = searchText =>{
         searchText.preventDefault()
         dispatch({
-            type: actionTypes.SET_SEARCH_TERM
+            type: actionTypes.SET_SEARCH_TERM,
+            term: input
         })
+        navigate("/search")
     }
   return (
 
