@@ -3,7 +3,7 @@ import './SearchPage.css'
 import { useStateValue } from '../StateProvider/StateProvider';
 import useGoogleSearch from "../useGoogleSearch";
 import { Link } from "react-router-dom";
-import { Search } from '../Components/Search';
+import Search from '../Components/Search';
 import SearchIcon from '@mui/icons-material/Search';
 import DescriptionIcon from '@mui/icons-material/Description';
 import ImageIcon from '@mui/icons-material/Image';
@@ -16,9 +16,9 @@ export const SearchPage = () => {
   const [{ term }, dispatch] = useStateValue();
 
   //call api
-  const {data} = useGoogleSearch(term)
-  
+  const { data } = useGoogleSearch(term)
 
+  console.log(data);
 
   return (
     <div className='searchPage'>
@@ -66,7 +66,7 @@ export const SearchPage = () => {
                 <Link to="/tools">Tools</Link>
               </div>
             </div>
-          </div>  
+          </div>
         </div>
       </div>
       {term && <div className="searchPage_results">
@@ -76,17 +76,17 @@ export const SearchPage = () => {
         </p>
 
         {
-          data?.items.map((item, index)=>(
+          data?.items.map((item, index) => (
             <div className='searchPage_result' key={index}>
               {/* eslint-disable-next-line react/jsx-no-target-blank */}
               <a href={item.lin} target="blank">
                 {item.pagemap?.cse_image?.length > 0 && item.pagemap?.cse_image[0]?.src && (
-                  <img src={item.pagemap?.cse_image?.length > 0 && item.pagemap?.cse_image[0]?.src} alt="" 
-                  className="searchPage_resultImage"/>
+                  <img src={item.pagemap?.cse_image?.length > 0 && item.pagemap?.cse_image[0]?.src} alt=""
+                    className="searchPage_resultImage" />
                 )}
                 {item.displayLink} ✔
               </a>
-               {/* eslint-disable-next-line react/jsx-no-target-blank */}
+              {/* eslint-disable-next-line react/jsx-no-target-blank */}
               <a href={item.link} className="searchPage_resultTitle" target="_blank">
                 <h2>{item.title}</h2>
               </a>
