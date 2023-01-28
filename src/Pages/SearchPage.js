@@ -66,11 +66,34 @@ export const SearchPage = () => {
                 <Link to="/tools">Tools</Link>
               </div>
             </div>
-          </div>
+          </div>  
         </div>
       </div>
       {term && <div className="searchPage_results">
+        <p className="searchPage_resultCount">
+          About {data?.searchInformation.formattedTotalResults} results
+          ({data?.searchInformation.formattedSearchTime} seconds) for {term}
+        </p>
 
+        {
+          data?.items.map(item=>(
+            <div className='searchPage_result'>
+              {/* eslint-disable-next-line react/jsx-no-target-blank */}
+              <a href={item.lin} target="blank">
+                {item.pagemap?.cse_image?.length > 0 && item.pagemap?.cse_image[0]?.src && (
+                  <img src={item.pagemap?.cse_image?.length > 0 && item.pagemap?.cse_image[0]?.src} alt="" />
+                )}
+                {item.displayLink} ✔
+              </a>
+              <a href={item.link} className="searchPage_resultTitle" target="_blank">
+                <h2>{item.title}</h2>
+              </a>
+              <p className="searchPage_resultSnippet">
+                {item.snippet}
+              </p>
+            </div>
+          ))
+        }
       </div>}
     </div>
   )
