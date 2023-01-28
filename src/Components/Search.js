@@ -7,6 +7,7 @@ import { useStateValue } from '../StateProvider/StateProvider';
 import { Button } from '@mui/material';
 import { useNavigate } from "react-router-dom";
 function Search({ hideButtons = false }) {
+    
     const [input, setInput] = useState("")
     // eslint-disable-next-line no-empty-pattern
     const [{ }, dispatch] = useStateValue()
@@ -15,7 +16,7 @@ function Search({ hideButtons = false }) {
 
     const search = sou => {
         sou.preventDefault()
-        console.log('Click google search button', input)
+        
         dispatch({
             type: actionTypes.SET_SEARCH_TERM,
             term: input
@@ -29,6 +30,7 @@ function Search({ hideButtons = false }) {
                 <input value={input} onChange={sou => setInput(sou.target.value)} />
                 <MicIcon />
             </div>
+            
             {!hideButtons ? (
                 <div className="search_buttons">
                     <Button variant="outlined" onClick={search}>
