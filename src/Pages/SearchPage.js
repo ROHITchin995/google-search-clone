@@ -15,6 +15,11 @@ export const SearchPage = () => {
   // eslint-disable-next-line no-unused-vars
   const [{ term }, dispatch] = useStateValue();
 
+  //call api
+  const {data} = useGoogleSearch(term)
+  
+
+
   return (
     <div className='searchPage'>
       <div className="searchPage_header">
@@ -64,6 +69,9 @@ export const SearchPage = () => {
           </div>
         </div>
       </div>
+      {term && <div className="searchPage_results">
+
+      </div>}
     </div>
   )
 }
